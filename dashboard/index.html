@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied launch value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <h1>Token Radar</h1>
+  <p id="sub" class="sub"></p>
+  <nav>
+    <button data-view="board" class="tab active">Radar board</button>
+    <button data-view="live" class="tab">Already trading</button>
+    <button data-view="method" class="tab">Method &amp; validation</button>
+  </nav>
+</header>
+
+<main>
+  <section id="view-board">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search name or slug">
+      <select id="fcat"><option value="">All categories</option></select>
+      <select id="fverdict">
+        <option value="">All verdicts</option>
+        <option value="farm">Farm</option>
+        <option value="thin">Thin</option>
+        <option value="skip">Skip</option>
+      </select>
+      <label class="chk"><input id="fwatch" type="checkbox"> Watchlist only</label>
+      <span id="count" class="count"></span>
+    </div>
+    <div class="wrap">
+      <table id="board">
+        <thead><tr>
+          <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="category">Category</th>
+          <th data-k="tvl_usd" class="num">TVL</th><th data-k="change_7d" class="num">7d</th>
+          <th data-k="implied_value_usd" class="num">Implied value</th><th class="num">Range (80%)</th>
+          <th data-k="launch_odds" class="num">Launch odds</th><th data-k="verdict">Verdict</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="detail" class="detail hidden"></div>
+  </section>
+
+  <section id="view-live" class="hidden">
+    <p class="note">These protocols already have a token. The radar never ranks them; they are the
+    calibration set the model is fitted on, and the anchors each candidate is priced against.</p>
+    <div class="wrap">
+      <table id="livet">
+        <thead><tr><th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">Mcap / TVL</th><th class="num">7d</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="view-method" class="hidden">
+    <div id="method"></div>
+  </section>
+</main>
+
+<footer><p id="foot"></p></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
